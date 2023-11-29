@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# ROTA means rotational device (1 for true, 0 for false)
+# Reminder that VMs might mask the fact that their disks exist on an SSD but appear to be an HDD through this command.
+lsblk -d -o name,rota

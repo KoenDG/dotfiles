@@ -6,6 +6,13 @@ set background=dark
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
+" Set the default shell.
+set shell=bash
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " Enhance command-line completion

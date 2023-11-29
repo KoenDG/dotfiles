@@ -4,24 +4,40 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 # git pull origin main;
 
-function doIt() {
+function doFiles() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
+		--exclude "bin/" \
 		-avh --no-perms . ~;
+}
+
+function doBin() {
+	rsync --exclude ".git/" \
+		--exclude ".DS_Store" \
+		--exclude ".osx" \
+		--exclude "bootstrap.sh" \
+		--exclude "README.md" \
+		--exclude "LICENSE-MIT.txt" \
+		-avh ./bin/ ~/bin/;
+}
+
+function doReload() {
 	source ~/.bash_profile;
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-	fi;
+
+read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	doFiles;
+	doBin;
+	doReload;
 fi;
-unset doIt;
+
+unset doFiles;
+unset doBin;
+unset doReload;
