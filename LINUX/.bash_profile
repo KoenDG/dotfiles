@@ -142,3 +142,17 @@ for file in ~/.{bash_path,bash_exports,bash_aliases,bash_functions,bash_extra,ba
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
+# Source SSH settings, if applicable
+
+SSH_ENV="$HOME/.ssh/agent-environment"
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
