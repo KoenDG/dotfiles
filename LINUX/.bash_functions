@@ -130,9 +130,9 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-extract () {
-  if [ -f $1 ] ; then
-    case $1 in
+function extract () {
+  if [ -f "${1}" ] ; then
+    case "${1}" in
       *.tar.bz2)   tar xjvf $1    ;;
       *.tar.gz)    tar xzvf $1    ;;
       *.tar.xz)    tar xvf $1    ;;
@@ -142,8 +142,8 @@ extract () {
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1    ;;
       *.tgz)       tar xzf $1    ;;
-			*.lha)       lha e $1        ;;
-      *.zip)       unzip2dir $1     ;;
+      *.lha)       lha e $1        ;;
+      *.zip)       extract_zip "${1}"     ;;
       *.Z)         uncompress $1    ;;
       *.7z)        7z x $1    ;;
       *.ace)       unace x $1    ;;

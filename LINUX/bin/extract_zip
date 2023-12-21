@@ -1,0 +1,37 @@
+#!/bin/bash
+
+extract_zip() {
+  if [ $# -ne 1 ]; then
+    echo "Usage: extract_zip <zip_file>"
+    return 1
+  fi
+
+  zip_file="$1"
+  base_name=$(basename "$zip_file" | sed 's/\.zip$//')
+  output_dir="./$base_name"
+
+  if [ -d "$output_dir" ]; then
+    echo "Error: Directory $output_dir already exists. Choose a different name or remove the existing directory."
+    return 1
+  fi
+
+  mkdir "$output_dir" && unzip -q "$zip_file" -d "$output_dir"
+
+  if [ $? -eq 0 ]; then
+    echo "Successfully extracted '$zip_file' to '$output_dir'"
+  else
+    echo "Extraction failed for '$zip_file'"
+  fi
+}
+
+# Check if the script is being sourced or executed
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  # The script is being executed, not sourced
+  if [ $# -ne 1 ]; then
+    echo "Usage: $0 <zip_file>"
+    exit 1
+  fi
+
+  # Call the function with the provided zip file argument
+  extract_zip "$1"
+fi
