@@ -106,34 +106,8 @@ esac
 ### SET CUSTOM PATH FOR WSL
 
 if [ -d "/usr/lib/wsl" ]; then
-	export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/snap/bin"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/snap/bin"
 fi
-
-# Add /home/$USER/bin to $PATH
-case :$PATH: in
-	*:/home/$USER/bin:*) ;;
-	*) PATH=/home/$USER/bin:$PATH ;;
-esac
-
-# Add /home/$USER/.local/bin to $PATH
-case :$PATH: in
-	*:/home/$USER/.local/bin:*) ;;
-	*) PATH=/home/$USER/.local/bin:$PATH ;;
-esac
-
-# Enable tab completion for tmux
-#source /home/kdegroot/.tmux/plugins/completion/tmux
-
-# Add /home/$USER/.tmux/tmuxifier to $PATH
-case :$PATH: in
-	*:/home/$USER/.tmux/tmuxifier/bin:*) ;;
-	*) PATH=/home/$USER/.tmux/tmuxifier/bin:$PATH ;;
-esac
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
