@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Add /home/$USER/bin to $PATH
+case :$PATH: in
+    *:/home/$USER/bin:*) ;;
+    *) PATH=/home/$USER/bin:$PATH ;;
+esac
+
+# Add /home/$USER/.local/bin to $PATH
+case :$PATH: in
+    *:/home/$USER/.local/bin:*) ;;
+    *) PATH=/home/$USER/.local/bin:$PATH ;;
+esac
+
+# Enable tab completion for tmux
+#source /home/$USER/.tmux/plugins/completion/tmux
+
+# Add /home/$USER/.tmux/tmuxifier to $PATH
+case :$PATH: in
+    *:/home/$USER/.tmux/tmuxifier/bin:*) ;;
+    *) PATH=/home/$USER/.tmux/tmuxifier/bin:$PATH ;;
+esac
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
