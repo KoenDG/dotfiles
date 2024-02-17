@@ -54,6 +54,13 @@ alias edit="nano -u -c -W --tabsize=4"
 alias nano="nano -u -c -W --tabsize=4"
 
 
+### SYSTEMD
+alias systemd_paths="systemctl -p UnitPath show"
+
+alias systemd_system_unit_dir="pkg-config systemd --variable=systemdsystemunitdir"
+alias systemd_system_conf_dir="pkg-config systemd --variable=systemdsystemconfdir"
+
+
 ### VARIOUS
 
 # reload bash config
