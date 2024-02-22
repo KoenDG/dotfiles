@@ -146,6 +146,9 @@
 	# Detect copies as well as renames.
 	renames = copies
 
+    # Use historgram for diffing
+    algorithm = histogram
+
 [diff "bin"]
 
 	# Use `hexdump` to diff binary files.
@@ -199,3 +202,12 @@
 [fetch]
 
 	writeCommitGraph = true
+    fsckobjects = true
+
+[transfer]
+
+    fsckobjects = true
+
+[receive]
+
+    fsckobjects = true
