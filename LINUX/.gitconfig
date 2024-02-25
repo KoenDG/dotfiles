@@ -146,8 +146,8 @@
 	# Detect copies as well as renames.
 	renames = copies
 
-    # Use historgram for diffing
-    algorithm = histogram
+	# Use historgram for diffing
+	algorithm = histogram
 
 [diff "bin"]
 
@@ -164,8 +164,8 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
-    # Use zdiff3
-    conflictStyle = zdiff3
+	# Use zdiff3
+	conflictStyle = zdiff3
 
 [push]
 
@@ -202,12 +202,12 @@
 [fetch]
 
 	writeCommitGraph = true
-    fsckobjects = true
+	fsckobjects = true
 
 [transfer]
 
-    fsckobjects = true
+	fsckobjects = true
 
 [receive]
 
-    fsckobjects = true
+	fsckobjects = true
