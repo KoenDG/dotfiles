@@ -545,3 +545,15 @@ function start_agent {
     . "${SSH_ENV}" > /dev/null
 #    /usr/bin/ssh-add;
 }
+
+function find_procbindmounts {
+  cat /proc/*/mounts | awk '$2 ~ /^\/proc\/[0-9]*($|\/)/ { print $2 }' | sort -ur | 
+    while read dir; do 
+        echo ===== POSSIBLE PROCESS HIDING $dir
+        echo -ne Overlay:\\t
+        cut -d' ' -f1-7 $dir/stat
+        umount $dir
+        echo -ne Hidden:\\t\\t
+        cut -d' ' -f1-7 $dir/stat
+    done
+}
