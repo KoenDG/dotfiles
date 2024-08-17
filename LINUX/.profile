@@ -1,29 +1,30 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+## Not using .bash_profile, for potential future usage on non-bash systems. See bash manpage.
 
-### DEFAULT START SETTINGS. ORIGIN LOST TO TIME
+### SETTINGS FOR NON-INTERACTIVE LOGIN(It's a login because how else did you get to the .profile file specific to my account?)
 
-iatest=$(expr index "$-" i)
-
-# Disable the bell
-if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
-
-# Ignore case on auto-completion
-# Note: bind used instead of sticking these in .inputrc
-if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
-
-# Show auto-completion list automatically, without double tab
-if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+## If we ever want to add a setting for commands sent over SSH, add them here, below this comment and above the $- case check.
 
 # If not running interactively, don't do anything
+# $- is a special bash parameter that returns the option flags used in the current bash shell.
+# Further, if it includes i, it means that the shell is interactive
+# Check it yourself by running "echo $-"
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-### SHELL OPTIONS
+### DEFAULT START SETTINGS. ORIGIN LOST TO TIME
+# Disable the bell
+bind "set bell-style visible";
 
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+bind "set completion-ignore-case on";
+
+# Show auto-completion list automatically, without double tab
+bind "set show-all-if-ambiguous on";
+
+### SHELL OPTIONS
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
 
@@ -33,7 +34,9 @@ shopt -s cdspell;
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize;
 
-# If set, and Readline is being used, the results of history substitution are not immediately passed to the shell parser. Instead, the resulting line is loaded into the Readline editing buffer, allowing further modification.
+# If set, and Readline is being used, the results of history substitution are not immediately passed to the shell parser.
+# Instead, the resulting line is loaded into the Readline editing buffer, allowing further modification.
+# This refers to history substitution, like doing "!100" to run command number 100 in the history file. With this enabled, the command will not be executed, it will be put in the commandline first so you can edit it.
 shopt -s histverify;
 
 # Disable history substitution. That being things like "sudo !!" where "!!" gets expand to the previous command. Will not work anymore. Needed for ansible --limit
@@ -130,7 +133,3 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

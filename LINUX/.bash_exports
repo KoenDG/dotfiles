@@ -21,7 +21,6 @@ export NODE_REPL_MODE='sloppy';
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
-
 ### HISTORY
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -57,11 +56,3 @@ export GPG_TTY=$(tty);
 
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
-
-### CUSTOM FOR HOST
-
-export JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
-export PATH=$JAVA_HOME/bin:$PATH
-export PATH=~/.npm-global/bin:$PATH
-
-export ANSIBLE_FORCE_COLOR=true
