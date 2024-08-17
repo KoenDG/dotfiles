@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-# Add /home/$USER/bin to $PATH
+# If /home/$USER/bin exists, add to $PATH
 case :$PATH: in
     *:/home/$USER/bin:*) ;;
     *) PATH=/home/$USER/bin:$PATH ;;
 esac
 
-# Add /home/$USER/.local/bin to $PATH
+# If /home/$USER/.local/bin exists, add to $PATH
 case :$PATH: in
     *:/home/$USER/.local/bin:*) ;;
     *) PATH=/home/$USER/.local/bin:$PATH ;;
@@ -15,8 +15,14 @@ esac
 # Enable tab completion for tmux
 #source /home/$USER/.tmux/plugins/completion/tmux
 
-# Add /home/$USER/.tmux/tmuxifier to $PATH
+# If /home/$USER/.tmux/tmuxifier exists, add to $PATH
 case :$PATH: in
     *:/home/$USER/.tmux/tmuxifier/bin:*) ;;
     *) PATH=/home/$USER/.tmux/tmuxifier/bin:$PATH ;;
+esac
+
+# If /home/$USER/.npm-global/bin exists, add to $PATH
+case :$PATH: in
+    *:/home/$USER/.npm-global/bin:*) ;;
+    *) PATH=/home/$USER/.npm-global/bin:$PATH ;;
 esac
