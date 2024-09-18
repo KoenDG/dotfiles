@@ -22,8 +22,4 @@ done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.9.2.pyz videos --all "$botto
 
 echo "Going to download $result"
 
-CT=`date +"%m_%d_%Y"`
-
-echo "${result}" > ./999_"${CT}".txt
-
 python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.9.2.pyz download -q source $result
