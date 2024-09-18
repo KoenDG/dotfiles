@@ -18,8 +18,12 @@ while read -r number; do
   if [ "$match_found" == false ]; then
     result+=" $cleaned_number"
   fi
-done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.3.1.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
+done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.9.2.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
 
 echo "Going to download $result"
 
-python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.3.1.pyz download -q source $result
+CT=`date +"%m_%d_%Y"`
+
+echo "${result}" > ./999_"${CT}".txt
+
+python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.9.2.pyz download -q source $result
