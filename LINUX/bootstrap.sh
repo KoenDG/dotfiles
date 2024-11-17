@@ -27,7 +27,7 @@ function doBin() {
 }
 
 function doReload() {
-	source ~/.bash_profile;
+	source ~/.profile;
 }
 
 
