@@ -3,6 +3,8 @@
 # Make vim the default editor.
 export EDITOR='nano';
 
+export PROFILE=~/.bash_extra
+
 ### COLORS
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 # Guide for LS_COLORS: https://web.archive.org/web/20180106090557/http://linux-sxs.org/housekeeping/lscolors.html
