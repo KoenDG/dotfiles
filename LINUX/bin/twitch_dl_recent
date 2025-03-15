@@ -20,6 +20,8 @@ while read -r number; do
   fi
 done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.10.0.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
 
-echo "Going to download $result"
+reversed=$(echo $result | awk '{for(i=NF; i>0; i--) printf "%s ", $i; print ""}')
 
-python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.10.0.pyz download -q source $result
+echo "Going to download $reversed"
+
+python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.10.0.pyz download -q source $reversed
