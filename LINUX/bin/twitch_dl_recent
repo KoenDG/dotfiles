@@ -24,4 +24,4 @@ reversed=$(echo $result | awk '{for(i=NF; i>0; i--) printf "%s ", $i; print ""}'
 
 echo "Going to download $reversed"
 
-python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.2.11.0.pyz download -q source $reversed
+python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.0.0.pyz download -q source $reversed
