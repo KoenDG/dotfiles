@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "bat/linux/amd64": {
+    "tag": "v0.25.0",
+    "updated_at": "2025-05-11T17:58:26.275574",
+    "sha256": "93f47d76abe328c402ef712e9ac92aa6d5bc84d5adcbcaf0bbc5665e5275a941",
+    "url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-musl.tar.gz"
+  },
+  "fzf/linux/amd64": {
+    "tag": "v0.62.0",
+    "updated_at": "2025-05-11T17:58:26.294481",
+    "sha256": "64b56dd484a2317d5f04c28ac0791b36807f034adb419209ad39fb6637255794",
+    "url": "https://github.com/junegunn/fzf/releases/download/v0.62.0/fzf-0.62.0-linux_amd64.tar.gz"
+  },
+  "twitch-dl/linux/amd64": {
+    "tag": "3.0.0",
+    "updated_at": "2025-05-11T17:58:26.296574",
+    "sha256": "34ae75e993c68f4a1d1b68c43ea9e308e1a33432e0ce37930be0bd97335ba165",
+    "url": "https://github.com/ihabunek/twitch-dl/releases/download/3.0.0/twitch-dl.3.0.0.pyz"
+  },
+  "zoxide/linux/amd64": {
+    "tag": "v0.9.7",
+    "updated_at": "2025-05-11T17:58:26.308916",
+    "sha256": "ee53a42c11fe8a175ef7b136bb91f588aef76e1ae7133e58a695b1199588ee7e",
+    "url": "https://github.com/ajeetdsouza/zoxide/releases/download/v0.9.7/zoxide-0.9.7-x86_64-unknown-linux-musl.tar.gz"
+  }
+}
