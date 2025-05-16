@@ -18,10 +18,10 @@ while read -r number; do
   if [ "$match_found" == false ]; then
     result+=" $cleaned_number"
   fi
-done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.0.0.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
+done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.1.0.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
 
 reversed=$(echo $result | awk '{for(i=NF; i>0; i--) printf "%s ", $i; print ""}')
 
 echo "Going to download $reversed"
 
-python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.0.0.pyz download -q source $reversed
+python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.1.0.pyz download -q source $reversed
