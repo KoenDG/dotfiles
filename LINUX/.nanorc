@@ -16,6 +16,9 @@ set minibar         # Displays file name and other information in the bottom bar
 set whitespace "»·" # Shows whitespace for space and tabs
 set trimblanks      # Remove trailing whitespace from wrapped lines when automatic hard-wrapping occurs or when text is justified.
 set unix            # Save a file by default in Unix format. This overrides nano’s default behavior of saving a file in the format that it had. (This option has no effect when you also use set noconvert.)
+set titlecolor normal,normal # Disable inverse text for the minibar
+set smarthome       # Make the Home key smarter. When Home is pressed anywhere but at the very beginning of non-whitespace characters on a line, the cursor will jump to that beginning (either forwards or backwards). If the cursor is already at that position, it will jump to the true beginning of the line.
+set wordbounds      # Detect word boundaries differently by treating punctuation characters as parts of words.
 
 # Enable and set a working backup directory
 set backup                              # Creates backups of your current file.

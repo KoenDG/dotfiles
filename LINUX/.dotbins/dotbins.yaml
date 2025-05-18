@@ -3,7 +3,7 @@
 # See https://github.com/basnijholt/dotbins for more information
 
 # Directory where tool binaries will be stored
-tools_dir: ~/.dotbins
+tools_dir: ~/.local/bin
 
 # Target platforms and architectures for which to download binaries
 # These determine which system binaries will be downloaded and managed
@@ -19,6 +19,12 @@ tools:
   fzf: junegunn/fzf          # Fuzzy finder for the terminal
   zoxide: ajeetdsouza/zoxide # Smarter cd command with frecency
   twitch-dl: ihabunek/twitch-dl # Twitch downloader.
+  gallery-dl:
+    repo: mikf/gallery-dl
+    arch_map:
+      amd64: x86_64
+    asset_patterns: gallery-dl.bin
+    binary_name: gallery-dl
 
   # Example with shell customization
   # starship:
