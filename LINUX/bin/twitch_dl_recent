@@ -5,9 +5,10 @@ bottom_most_dir="$(basename "$PWD")"
 
 result=""
 while read -r number; do
-  # Remove color codes and leading/trailing spaces
-  cleaned_number=$(echo -e "$number" | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | tr -d '[:space:]')
   match_found=false
+
+  cleaned_number=$(echo "$number" | tr -d \")
+
   for file in *; do
     if [[ "$file" == *"$cleaned_number"* ]]; then
       match_found=true
@@ -18,7 +19,7 @@ while read -r number; do
   if [ "$match_found" == false ]; then
     result+=" $cleaned_number"
   fi
-done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.1.0.pyz videos --all "$bottom_most_dir" | grep 'Video ' | awk '{print $2}')
+done < <(python ~/TOOLS_PROGRAMS/TWITCH/twitch-dl.3.1.0.pyz videos --all --json "$bottom_most_dir" | jq '.videos[] | .id')
 
 reversed=$(echo $result | awk '{for(i=NF; i>0; i--) printf "%s ", $i; print ""}')
 
