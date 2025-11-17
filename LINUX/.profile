@@ -71,7 +71,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-
 ### PROMPT COLORS
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -133,3 +132,7 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+### Extra autocomplete settings for fzf
+
+eval "$(fzf --bash)"
