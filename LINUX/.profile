@@ -114,7 +114,7 @@ fi
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{bash_path,bash_exports,bash_aliases,bash_functions,bash_extra,bash_prompt}; do
+for file in ~/.{bash_path,bash_exports,bash_aliases,bash_functions,bash_prompt,bash_extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -134,5 +134,4 @@ else
 fi
 
 ### Extra autocomplete settings for fzf
-
 eval "$(fzf --bash)"
