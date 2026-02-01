@@ -25,6 +25,11 @@ tools:
       amd64: x86_64
     asset_patterns: gallery-dl.bin
     binary_name: gallery-dl
+  yt-dlp:
+    repo: yt-dlp/yt-dlp
+    asset_patterns: yt-dlp_linux
+    binary_name: yt-dlp
+
 
   # Example with shell customization
   # starship:
