@@ -557,3 +557,32 @@ function find_procbindmounts {
         cut -d' ' -f1-7 $dir/stat
     done
 }
+
+## Use: $ epoch2utc 1776324203
+### 2026-04-16 07:23:23 UTC
+epoch2utc() {
+	local input="$1"
+
+	# Check if input exists
+	if [[ -z "$input" ]]; then
+		echo "Usage: epoch2utc <epoch_seconds>"
+		return 1
+	fi
+
+	# Ensure input is only digits
+	if ! [[ "$input" =~ ^[0-9]+$ ]]; then
+		echo "Error: input must be a numeric Unix epoch (seconds)"
+		return 1
+	fi
+
+	# Handle milliseconds (length > 10)
+	if (( ${#input} > 10 )); then
+		input="${input:0:10}"
+	fi
+
+	# Convert
+	if ! date -u -d @"$input" +"%Y-%m-%d %H:%M:%S UTC" 2>/dev/null; then
+		echo "Error: invalid epoch value"
+		return 1
+	fi
+}
