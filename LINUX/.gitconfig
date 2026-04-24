@@ -76,6 +76,9 @@
 	# Show the user email for the current repository.
 	whoami = config user.email
 
+	# Meld as custom alias
+	meld = difftool -d -t meld
+
 [apply]
 
 	# Detect whitespace errors when applying a patch.
@@ -87,7 +90,8 @@
 	sort = -committerdate
 
 [core]
-	pager = tr -d '\\r' | less -RX
+	#pager = tr -d '\\r' | less -RX
+	pager = delta --diff-highlight --features side-by-side
 	editor = nano -u -c -W --tabsize=4
 
 	# Use custom `.gitignore` and `.gitattributes`.
@@ -142,17 +146,28 @@
 	#gpgsign = true
 
 [diff]
-
 	# Detect copies as well as renames.
 	renames = copies
 
-	# Use historgram for diffing
+    colorMoved = default        # highlights moved blocks differently from add/remove
+    colorMovedWS = ignore-all-space   # ignore whitespace when detecting moved blocks
+    wordDiff = color            # show word-level diffs instead of line-level
+
+	# Use histogram for diffing
 	algorithm = histogram
 
-[diff "bin"]
+	tool = meld
 
+[diff "bin"]
 	# Use `hexdump` to diff binary files.
 	textconv = hexdump -v -C
+
+[difftool]
+	prompt = false
+	guiDefault = true           # prefer GUI tool by default (uses diff.guitool)
+
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
 
 [help]
 
@@ -160,12 +175,17 @@
 	autocorrect = 1
 
 [merge]
-
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
+	tool = meld
+
 	# Use zdiff3
 	conflictStyle = zdiff3
+
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+    keepBackup = false          # don't leave .orig files after merging
 
 [push]
 
