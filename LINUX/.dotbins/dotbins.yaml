@@ -83,6 +83,7 @@ tools:
   ## My additions
   twitch-dl: ihabunek/twitch-dl # Twitch downloader.
   gallery-dl:
+    api_url: https://codeberg.org/api/v1
     repo: mikf/gallery-dl
     arch_map:
       amd64: x86_64
